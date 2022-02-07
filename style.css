@@ -1,0 +1,155 @@
+		#logout{
+			margin: 10px;
+			padding: 30px;
+			cursor: pointer;
+			text-align: center;
+			background-color: white;
+			border-radius: 20px;
+		}
+		#logout:hover {
+			background-color: grey;
+			color: white;
+		}
+		.first{
+			cursor: pointer;
+			background-color: white;
+			border: 1px solid black;
+			height: 50px;
+			font-size:20px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.first a{
+			text-decoration: none;
+		}
+		.first:hover {
+			background-color: grey;
+		}
+		.second{
+			cursor: pointer;
+			background-color: lightgrey;
+			border: 1px solid black;
+			height: 50px;
+			font-size:20px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.second a{
+			text-decoration: none;
+		}
+		.second:hover {
+			background-color: grey;
+		}
+		th, td{
+			padding: 10px;
+			text-align: left;
+		}
+		th{
+			background-color: #4CAF50;
+    		color: white;
+		}
+		.button {
+		    background-color: #6228b8;
+		    border: none;
+		    color: white;
+		    padding: 12px 20px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 12px;
+		    margin-right: 28px;
+		    -webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		    cursor: pointer;
+		}
+
+		.button1 {
+		    background-color: white; 
+		    color: black; 
+		}
+
+		.button1:hover {
+		    background-color: #6228b8;
+		    color: white;
+		}
+		body{
+			min-width: 1200px;
+		}
+		.editBtn,.deleteBtn{
+			padding: 4px 10px;
+			margin-right: 6px;
+			-webkit-transition-duration: 0.4s;
+			transition-duration: 0.4s;
+			border: 1px solid black;
+			cursor: pointer;
+		}
+		a{
+			text-decoration: none;
+		}
+		.editBtn:hover{
+			background-color: orange;
+		    color: white;
+		}
+		.deleteBtn:hover{
+			background-color: red;
+		    color: white;
+		}
+		.dropbtn {
+		    background-color: white; 
+		    color: black; 
+		    border: 2px solid #4CAF50;
+		    cursor: pointer;
+		    padding: 12px 20px;
+		    margin-right: 30px;
+		}
+		.dropdown {
+		    position: relative;
+		    display: inline-block;
+		}
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: lightgrey;
+		    min-width: 160px;
+		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		    z-index: 1;
+		}
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
+		.dropdown-content a:hover {
+			background-color: grey
+		}
+		.dropdown:hover .dropdown-content {
+		    display: block;
+		}
+		.dropdown:hover .dropbtn {
+		    background-color: lightgrey;
+		}
+		.searchTerm {
+  			float: left;
+  			margin-left: 20px;
+  			width: 30%;
+  			border: 3px solid #00B4CC;
+  			padding: 5px;
+  			height: 20px;
+  			outline: none;
+  			color: #9DBFAF;
+		}			
+		.searchButton { 
+  			right: -50px;
+  			width: 80px;
+  			height: 36px;
+  			border: 1px solid #00B4CC;
+  			background: #00B4CC;
+  			color: #fff;
+  			cursor: pointer;
+  			font-size: 20px;
+		}
+
+		body{
+			background-color:  #272729;
+		}
