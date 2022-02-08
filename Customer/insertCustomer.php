@@ -6,8 +6,7 @@ if(!isset($_SESSION['username'])){
 }
 
 function filterTable($query){
-	$con = mysqli_connect("localhost","root","","projectmanagement");
-    $filter_Result = mysqli_query($con ,$query);
+    $filter_Result = mysqli_query($conn ,$query);
     return $filter_Result;
 }
 include('../Home/header.php');
