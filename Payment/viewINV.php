@@ -65,6 +65,7 @@ $Totalprice = 0;
 				<div>地址: <?php echo $address; ?></div>
 			</div>
 			<button style="float: right;" class="button button1" onclick="window.location='insertPO.php'">加材料</button>
+			<button style="float: right;" class="button button1" onclick="window.location='insertWork.php'">加工作</button>
 			<button style="float: right;" class="button button1" onclick="window.location='insertStaff.php'">加员工</button>
 			<div style="width: 100%;height:500px;float: left;" id="table-wrapper">
 				<table border="1" style="background-color:white; border-collapse:collapse;width: 100%;" class="table">
@@ -115,12 +116,31 @@ $Totalprice = 0;
 						<?php
 						}
 						?>
+						<?php
+						$sql3 = "SELECT * FROM work WHERE house_id = '$INVID'";
+						$result3 = $conn->query($sql3);
+						while ($rows = $result3->fetch_assoc()) {
+							$work_name = $rows['work_name'];
+							$subtotal = $subtotal + $rows['price'];
+							$Totalprice = $Totalprice + $rows['price'];
+							$total2 = sprintf('%0.2f', $rows['price']);
+						?>
+							<tr>
+								<td><label><?php echo $work_name; ?></label></td>
+								<td>
+									<a href="editWork.php?work_id=<?php echo $rows['work_id']; ?>"><span class="editBtn">Edit</span></a>
+								</td>
+								<td><label><?php echo $total2; ?></label></td>
+							</tr>
+						<?php
+						}
+						?>
 						<tr>
 							<td colspan="2"></td>
 							<td>
 								<label>Sub-Total(Excluding Tax): </label>
 								<br>
-								<label><?php echo "SGD" . $subtotal; ?></label>
+								<label><?php echo "SGD " . $subtotal; ?></label>
 							</td>
 						</tr>
 						<tr>
@@ -128,7 +148,7 @@ $Totalprice = 0;
 							<td>
 								<label>TAX: </label>
 								<br>
-								<label><?php echo "SGD" . $tax; ?></label>
+								<label><?php echo "SGD " . $tax; ?></label>
 							</td>
 						</tr>
 						<tr>
@@ -136,7 +156,7 @@ $Totalprice = 0;
 							<td>
 								<label>Total: </label>
 								<br>
-								<label><?php echo "SGD" . $Totalprice; ?></label>
+								<label><?php echo "SGD " . $Totalprice; ?></label>
 							</td>
 						</tr>
 					</tbody>
