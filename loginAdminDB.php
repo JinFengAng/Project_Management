@@ -21,7 +21,7 @@ if(isset($_POST['login'])){
 	}
 	else
 	{
-		header("Location:loginAdmin.php");
+		header("Location:index.php");
 	}
 }
 
