@@ -71,7 +71,9 @@ $Totalprice = 0;
 				<table border="1" style="background-color:white; border-collapse:collapse;width: 100%;" class="table">
 					<thead style="background-color: #6228b8">
 						<tr>
+							<th>No.</th>
 							<th>材料单/员工</th>
+							<th>日期</th>
 							<th>Actions</th>
 							<th>总数</th>
 						</tr>
@@ -80,7 +82,9 @@ $Totalprice = 0;
 						<?php
 						$sql = "SELECT * FROM purchase_order WHERE house_id = '$INVID'";
 						$result = $conn->query($sql);
+						$count_material = 0;
 						while ($rows = $result->fetch_assoc()) {
+							$count_material++;
 							$INV = sprintf('%05d', $rows['PO_id']);
 							$subtotal = $subtotal + $rows['subTotal'];
 							$tax = $tax + $rows['taxPrice'];
@@ -88,7 +92,9 @@ $Totalprice = 0;
 							$total2 = sprintf('%0.2f', $rows['totalPrice']);
 						?>
 							<tr>
+								<td><label>M <?php echo $count_material; ?></label></td>
 								<td><label><?php echo $INV; ?></label></td>
+								<td><label>-</label></td>
 								<td>
 									<a href="../Order/editPO.php?POid=<?php echo $rows['PO_id']; ?>"><span class="editBtn">Edit</span></a>
 								</td>
@@ -100,18 +106,23 @@ $Totalprice = 0;
 						<?php
 						$sql2 = "SELECT s.*, c.customer_name FROM staff_work s LEFT JOIN customer c ON s.customer_id=c.customer_id WHERE house_id = '$INVID'";
 						$result2 = $conn->query($sql2);
+						$count_staff=0;
 						while ($rows = $result2->fetch_assoc()) {
 							$customer_name = $rows['customer_name'];
-							$subtotal = $subtotal + $rows['salary'];
-							$Totalprice = $Totalprice + $rows['salary'];
+							$count_staff++;
+							$subtotal = $subtotal - $rows['salary'];
+							$date = $rows['begin_date'];
+							$Totalprice = $Totalprice - $rows['salary'];
 							$total2 = sprintf('%0.2f', $rows['salary']);
 						?>
 							<tr>
+								<td><label>S <?php echo $count_staff; ?></label></td>
 								<td><label><?php echo $customer_name; ?></label></td>
+								<td><label><?php echo $date; ?></label></td>
 								<td>
 									<a href="editStaff.php?staff_id=<?php echo $rows['staff_work_id']; ?>"><span class="editBtn">Edit</span></a>
 								</td>
-								<td><label><?php echo $total2; ?></label></td>
+								<td><label>-<?php echo $total2; ?></label></td>
 							</tr>
 						<?php
 						}
@@ -119,16 +130,20 @@ $Totalprice = 0;
 						<?php
 						$sql3 = "SELECT * FROM work WHERE house_id = '$INVID'";
 						$result3 = $conn->query($sql3);
+						$count_house =0;
 						while ($rows = $result3->fetch_assoc()) {
-							$work_name = $rows['work_name'];
-							$subtotal = $subtotal + $rows['price'];
-							$Totalprice = $Totalprice + $rows['price'];
-							$total2 = sprintf('%0.2f', $rows['price']);
+							$count_house++;
+							$work_name = sprintf('%05d', $rows['work_id']);
+							$subtotal = $subtotal + $rows['totalPrice'];
+							$Totalprice = $Totalprice + $rows['totalPrice'];
+							$total2 = sprintf('%0.2f', $rows['totalPrice']);
 						?>
 							<tr>
+								<td><label>H <?php echo $count_house; ?></label></td>
 								<td><label><?php echo $work_name; ?></label></td>
+								<td><label>-</label></td>
 								<td>
-									<a href="editWork.php?work_id=<?php echo $rows['work_id']; ?>"><span class="editBtn">Edit</span></a>
+									<a href="../Order/editWork.php?work_id=<?php echo $rows['work_id']; ?>"><span class="editBtn">Edit</span></a>
 								</td>
 								<td><label><?php echo $total2; ?></label></td>
 							</tr>
@@ -136,7 +151,7 @@ $Totalprice = 0;
 						}
 						?>
 						<tr>
-							<td colspan="2"></td>
+							<td colspan="4"></td>
 							<td>
 								<label>Sub-Total(Excluding Tax): </label>
 								<br>
@@ -144,7 +159,7 @@ $Totalprice = 0;
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"></td>
+							<td colspan="4"></td>
 							<td>
 								<label>TAX: </label>
 								<br>
@@ -152,7 +167,7 @@ $Totalprice = 0;
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"></td>
+							<td colspan="4"></td>
 							<td>
 								<label>Total: </label>
 								<br>

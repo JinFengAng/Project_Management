@@ -1,8 +1,8 @@
 <?php
 $servername = 'localhost';
-$username = 'id18419767_admin';
-$password = 'oG#X_TVdwsR01d$%';
-$database = 'id18419767_projectmanagement';
+$username = 'root';
+$password = '';
+$database = 'projectmanagement';
 
 $conn = mysqli_connect($servername,$username,$password,$database);
 header('charset=utf-8');
