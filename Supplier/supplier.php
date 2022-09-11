@@ -5,7 +5,8 @@ if(!isset($_SESSION['username'])){
 	header("Location:loginAdmin.php");
 }
 function filterTable($query){
-	$con = mysqli_connect("localhost","root","","projectmanagement");
+    $con = mysqli_connect("localhost","root","","projectmanagement");
+	// $con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
     $filter_Result = mysqli_query($con ,$query);
     return $filter_Result;
 }
@@ -63,17 +64,17 @@ include('../Home/header.php');
 						echo "<td>".$rows['phNumber']."</td>";
 						echo "<td>";
 							if($rows['completed']== '1'){
-								echo "完成";
+								echo "<h5 style='color: green'>完成</h5>";
 							}else{
-								echo "未完成";
+								echo "<h5 style='color: red'>未完成</h5>";
 							}
 						"</td>";
 						echo "<td><a href='editSupplier.php?id=".$rows['house_id']."'>
-						<span class='editBtn'>Edit</span></a>
+						<span class='editBtn'>更改</span></a>
 						<a href='deleteSupplierDB.php?id=".$rows['house_id']."' onclick=\"return confirm('Are you sure you want to delete this?')\">
-						<span class='deleteBtn'>Delete</span></a>
+						<span class='deleteBtn'>清除</span></a>
 						<a href='complete.php?id=".$rows['house_id']."' onclick=\"return confirm('Are you sure?')\">
-						<span class='editbtn'>Completed</span></a></td>";
+						<span class='editbtn'>完成</span></a></td>";
 						echo "</tr>";
 					}
 				}

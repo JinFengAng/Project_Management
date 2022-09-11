@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 	header("Location:loginAdmin.php");
 }
 $id = $_SESSION['INVid'];
-$sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'projectmanagement' AND   TABLE_NAME  = 'purchase_order';";
+$sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'id18419767_projectmanagement' AND   TABLE_NAME  = 'purchase_order';";
 $result = $conn->query($sql);
 $lastPOID = $result->fetch_assoc();
 $_SESSION['currentPOID'] = $lastPOID['AUTO_INCREMENT'];

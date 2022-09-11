@@ -17,7 +17,7 @@ if(isset($_POST['save'])){
 		        $quantity = $quantity_array[$i];
 		        $unitPrice = $unitPrice_array[$i];
 		        $subTotal += $unitPrice * $quantity;
-		        $sql = ("INSERT INTO purchase_order_detail (PO_id, product_name, quantity, product_price) VALUES ('".$_SESSION['currentPOID']."', '$item', '$quantity', '$unitPrice')");
+		        $sql = ("INSERT INTO purchase_order_detail(PO_id, product_name, quantity, product_price) VALUES ('".$_SESSION['currentPOID']."', '$item', '$quantity', '$unitPrice')");
 		        $conn->query($sql);
 		    }
 		    $TaxPrice = $subTotal * $TaxRate;

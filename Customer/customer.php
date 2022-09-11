@@ -5,7 +5,9 @@ if(!isset($_SESSION['username'])){
 	header("Location:loginAdmin.php");
 }
 function filterTable($query){
-    $filter_Result = mysqli_query($conn ,$query);
+    $con = mysqli_connect("localhost","root","","projectmanagement");
+    // $con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
+    $filter_Result = mysqli_query($con ,$query);
     return $filter_Result;
 }
 
@@ -56,9 +58,9 @@ include('../Home/header.php');
 						echo "<td>".$rows['customer_name']."</td></a>";
 						echo "<td>".$rows['customer_hpNo']."</td>";
 						echo "<td><a href='editCustomer.php?id=".$rows['customer_id']."'>
-						<span class='editBtn'>Edit</span></a>
+						<span class='editBtn'>更改</span></a>
 						<a href='deleteCustomerDB.php?id=".$rows['customer_id']."' onclick=\"return confirm('Are you sure you want to delete this?')\">
-						<span class='deleteBtn'>Delete</span></a></td>";
+						<span class='deleteBtn'>清除</span></a></td>";
 						echo "</tr>";
 					}
 				}

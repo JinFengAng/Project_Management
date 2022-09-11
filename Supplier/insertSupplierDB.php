@@ -8,11 +8,9 @@ if(isset($_POST['submit'])){
 	$phonenumber = $_POST["phNumber"];
 	$today_date = date("d-m-Y");
 
-$sql = "INSERT INTO supplier(owner_name, work_details, house_address, phNumber) VALUES ('$name','$work_details','$address','$phonenumber')";
+$sql = "INSERT INTO supplier(owner_name, work_details, house_address, phNumber, completed) VALUES ('$name','$work_details','$address','$phonenumber', '0')";
 $conn->query($sql);
 $last_id = mysqli_insert_id($conn);
-$sql2 = "INSERT INTO c_payment(c_date, c_payment_price, status, house_id) VALUES ('$today_date','0','0','$last_id')";
-$conn->query($sql2);
 echo "<script> alert('Record updated')</script>";
 echo "<script>window.location.href='../Payment/viewINV.php?INVid=".$last_id."'</script>";
 }

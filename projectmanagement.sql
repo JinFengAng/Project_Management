@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 07, 2022 at 09:45 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- 主机： 127.0.0.1
+-- 生成日期： 2022-07-11 04:32:09
+-- 服务器版本： 10.4.24-MariaDB
+-- PHP 版本： 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projectmanagement`
+-- 数据库： `projectmanagement`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- 表的结构 `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- 转存表中的数据 `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`, `language`) VALUES
@@ -45,7 +46,7 @@ INSERT INTO `admin` (`admin_id`, `username`, `password`, `language`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- 表的结构 `customer`
 --
 
 CREATE TABLE `customer` (
@@ -54,17 +55,10 @@ CREATE TABLE `customer` (
   `customer_hpNo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_hpNo`) VALUES
-(1, '华文', '11111');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase_order`
+-- 表的结构 `purchase_order`
 --
 
 CREATE TABLE `purchase_order` (
@@ -77,24 +71,19 @@ CREATE TABLE `purchase_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `purchase_order`
+-- 转存表中的数据 `purchase_order`
 --
 
 INSERT INTO `purchase_order` (`PO_id`, `house_id`, `subTotal`, `taxPrice`, `totalPrice`, `purchase_date`) VALUES
-(2, 2, 3, 0, 3, '2022-02-07'),
-(3, 2, 3, 0, 3, '2022-02-07'),
-(4, 2, 3, 0, 3, '2022-02-07'),
-(5, 2, 3, 0, 3, '2022-02-07'),
-(6, 2, 3, 0, 3, '2022-02-07'),
-(7, 2, 3, 0, 3, '2022-02-07'),
-(8, 2, 3, 0, 3, '2022-02-07'),
-(9, 2, 0, 0, 0, '0000-00-00'),
-(10, 2, 0, 0, 0, '2022-02-07');
+(6, 1, 9, 0, 9, '2022-02-07'),
+(7, 1, 4, 0, 4, '2022-02-07'),
+(8, 1, 18, 0, 18, '2022-02-07'),
+(9, 1, 1, 0, 1, '2022-02-07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase_order_detail`
+-- 表的结构 `purchase_order_detail`
 --
 
 CREATE TABLE `purchase_order_detail` (
@@ -106,24 +95,22 @@ CREATE TABLE `purchase_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `purchase_order_detail`
+-- 转存表中的数据 `purchase_order_detail`
 --
 
 INSERT INTO `purchase_order_detail` (`PO_DTid`, `PO_id`, `product_name`, `product_price`, `quantity`) VALUES
-(2, 12, 'material 1', 100, 2),
-(3, 12, 'material 2', 20, 1),
-(7, 12, 'test', 10, 1),
-(8, 12, 'test', 10, 1),
-(9, 12, 'material 1', 1, 2),
-(10, 12, 'test', 10, 1),
-(11, 12, 'material 1', 1, 1),
-(12, 12, 'material 1', 3, 1),
-(13, 9, 'material 1', 3, 3);
+(5, 0, 'material 1', 10, 1),
+(6, 0, 'material 1', 2, 2),
+(8, 8, '', 0, 5),
+(9, 8, '', 0, 25),
+(10, 8, 'test2', 4, 2),
+(11, 8, 'test2', 5, 2),
+(12, 9, 'test3', 10, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff_work`
+-- 表的结构 `staff_work`
 --
 
 CREATE TABLE `staff_work` (
@@ -136,19 +123,16 @@ CREATE TABLE `staff_work` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `staff_work`
+-- 转存表中的数据 `staff_work`
 --
 
 INSERT INTO `staff_work` (`staff_work_id`, `house_id`, `customer_id`, `begin_date`, `n_days`, `salary`) VALUES
-(1, 1, 1, '2022-02-07', 2, 10),
-(2, 1, 1, '2022-02-07', 2, 10),
-(3, 1, 1, '2022-02-07', 2, 10),
-(4, 2, 2, '2022-02-07', 3, 20);
+(2, 1, 1, '2022-07-11', 1, 31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- 表的结构 `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -160,77 +144,156 @@ CREATE TABLE `supplier` (
   `completed` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `supplier`
---
-
-INSERT INTO `supplier` (`house_id`, `owner_name`, `phNumber`, `house_address`, `work_details`, `completed`) VALUES
-(2, 'House1', '1214124', 'test', 'test', 1);
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- 表的结构 `work`
+--
+
+CREATE TABLE `work` (
+  `work_id` int(10) NOT NULL,
+  `house_id` int(10) NOT NULL,
+  `totalPrice` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `work`
+--
+
+INSERT INTO `work` (`work_id`, `house_id`, `totalPrice`) VALUES
+(7, 1, 100),
+(8, 2, 122),
+(9, 1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `work_details`
+--
+
+CREATE TABLE `work_details` (
+  `work_Did` int(10) NOT NULL,
+  `work_id` int(10) NOT NULL,
+  `work_name` varchar(500) CHARACTER SET utf8 NOT NULL,
+  `total` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `work_details`
+--
+
+INSERT INTO `work_details` (`work_Did`, `work_id`, `work_name`, `total`) VALUES
+(6, 0, 'test2', 10),
+(7, 0, 'test2', 10),
+(8, 6, 'test2', 10),
+(9, 6, 'test2', 10),
+(10, 6, 'test2', 10),
+(11, 6, 'test3', 150),
+(13, 6, '华文', 20),
+(14, 7, 'material 1', 100),
+(15, 0, 'material 1', 11),
+(16, 0, 'test', 111),
+(17, 0, 'aaaaa', 12);
+
+--
+-- 转储表的索引
 --
 
 --
--- Indexes for table `admin`
+-- 表的索引 `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `customer`
+-- 表的索引 `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `purchase_order`
+-- 表的索引 `purchase_order`
 --
 ALTER TABLE `purchase_order`
   ADD PRIMARY KEY (`PO_id`);
 
 --
--- Indexes for table `purchase_order_detail`
+-- 表的索引 `purchase_order_detail`
 --
 ALTER TABLE `purchase_order_detail`
   ADD PRIMARY KEY (`PO_DTid`);
 
 --
--- Indexes for table `staff_work`
+-- 表的索引 `staff_work`
 --
 ALTER TABLE `staff_work`
   ADD PRIMARY KEY (`staff_work_id`);
 
 --
--- Indexes for table `supplier`
+-- 表的索引 `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`house_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 表的索引 `work`
+--
+ALTER TABLE `work`
+  ADD PRIMARY KEY (`work_id`);
+
+--
+-- 表的索引 `work_details`
+--
+ALTER TABLE `work_details`
+  ADD PRIMARY KEY (`work_Did`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `purchase_order`
+-- 使用表AUTO_INCREMENT `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用表AUTO_INCREMENT `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `PO_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `PO_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `purchase_order_detail`
+-- 使用表AUTO_INCREMENT `purchase_order_detail`
 --
 ALTER TABLE `purchase_order_detail`
-  MODIFY `PO_DTid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `PO_DTid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
--- AUTO_INCREMENT for table `staff_work`
+-- 使用表AUTO_INCREMENT `staff_work`
 --
 ALTER TABLE `staff_work`
-  MODIFY `staff_work_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `staff_work_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `supplier`
+-- 使用表AUTO_INCREMENT `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `house_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `house_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用表AUTO_INCREMENT `work`
+--
+ALTER TABLE `work`
+  MODIFY `work_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- 使用表AUTO_INCREMENT `work_details`
+--
+ALTER TABLE `work_details`
+  MODIFY `work_Did` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

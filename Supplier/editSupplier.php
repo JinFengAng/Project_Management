@@ -17,9 +17,9 @@ $sql = "SELECT * FROM supplier where house_id = '$id'";
 $result = $conn->query($sql);
 while($rows = $result->fetch_assoc()){
 	$name = $rows['owner_name'];
-	$telephone = $rows['work_details'];
+	$telephone = $rows['phNumber'];
 	$address = $rows['house_address'];
-	$email = $rows['phNumber'];
+	$email = $rows['work_details'];
 }
 include('../Home/header.php');
 ?>
@@ -36,7 +36,7 @@ include('../Home/header.php');
 				<h2 style="color:white">更改房子资料</h2>
 			</div>
 			<div style="width: 98%;margin: 10px; float: left;">		
-				<form action="editSupplierDB.php" method="POST">
+				<form action="editSupplierDB.php?id=<?php echo $id ?>" method="POST">
 					<div class="form-group">
 						<label style="color: white">屋主姓名</label>
 						<input type="text" name="name" placeholder="Company Name" value="<?php echo $name; ?>" required>
