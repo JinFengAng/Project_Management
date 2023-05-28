@@ -121,7 +121,6 @@ $Totalprice = 0;
 								<td><label><?php echo $date; ?></label></td>
 								<td>
 									<a href="editStaff.php?staff_id=<?php echo $rows['staff_work_id']; ?>"><span class="editBtn">Edit</span></a>
-									<a href="deleteStaffDB.php?staff_id=<?php echo $rows['staff_work_id']; ?>" onclick="return confirm('Are you sure you want to delete this?')"><span class="deleteBtn">Delete</span></a>
 								</td>
 								<td><label>-<?php echo $total2; ?></label></td>
 							</tr>

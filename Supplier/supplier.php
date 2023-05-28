@@ -5,8 +5,8 @@ if(!isset($_SESSION['username'])){
 	header("Location:loginAdmin.php");
 }
 function filterTable($query){
-    $con = mysqli_connect("localhost","root","","projectmanagement");
-	// $con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
+    $con = mysqli_connect("localhost","root","","id18419767_projectmanagement");
+    // $con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
     $filter_Result = mysqli_query($con ,$query);
     return $filter_Result;
 }
@@ -64,9 +64,9 @@ include('../Home/header.php');
 						echo "<td>".$rows['phNumber']."</td>";
 						echo "<td>";
 							if($rows['completed']== '1'){
-								echo "<h5 style='color: green'>完成</h5>";
+								echo "完成";
 							}else{
-								echo "<h5 style='color: red'>未完成</h5>";
+								echo "未完成";
 							}
 						"</td>";
 						echo "<td><a href='editSupplier.php?id=".$rows['house_id']."'>

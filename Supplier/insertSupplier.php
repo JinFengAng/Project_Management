@@ -6,7 +6,8 @@ if(!isset($_SESSION['username'])){
 }
 
 function filterTable($query){
-	$con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
+	$con = mysqli_connect("localhost","root","","id18419767_projectmanagement");
+	// $con = mysqli_connect("localhost","id18419767_admin","oG#X_TVdwsR01d$%","id18419767_projectmanagement");
     $filter_Result = mysqli_query($con ,$query);
     return $filter_Result;
 }

@@ -1,10 +1,8 @@
 <?php
 $servername = 'localhost';
-
 $username = 'root';
 $password = '';
-$database = 'projectmanagement';
-
+$database = 'id18419767_projectmanagement';
 // $username = 'id18419767_admin';
 // $password = 'oG#X_TVdwsR01d$%';
 // $database = 'id18419767_projectmanagement';
